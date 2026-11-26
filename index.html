@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Dinosaur AR - Lumphini Park</title>
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+  <a-scene
+    vr-mode-ui="enabled: false"
+    arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+    renderer="antialias: true; alpha: true">
+
+    <!-- กล้องที่อ่านพิกัด GPS และเข็มทิศมือถือ -->
+    <a-camera gps-camera="minDistance: 5; maxDistance: 200;" rotation-reader></a-camera>
+
+    <!-- โมเดลไดโนเสาร์ที่วางตามพิกัด GPS -->
+    <a-entity
+      gps-entity-place="latitude: 13.731400; longitude: 100.541800;"
+      gltf-model="./dinosaur.glb"
+      animation-mixer="clip: *; loop: repeat;"
+      scale="2 2 2"
+      position="0 -1.5 0">
+    </a-entity>
+
+  </a-scene>
+</body>
+</html>
